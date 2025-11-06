@@ -16,7 +16,7 @@
       ],
       "type": "a2a/mastra-a2a-node",
       "typeVersion": 1,
-      "url": "https://your-deployed-url.com/a2a/agent/qrBarcodeAgent"
+      "url": "https://telex-barcode-generation.vercel.app/"
     }
   ],
   "pinData": {},

@@ -79,7 +79,7 @@ barcode format:ean13 123456789012
 
 - `POST /api/v1/qr` - Generate QR code
 - `POST /api/v1/barcode` - Generate barcode
-- `POST /api/v1/a2a/agent/qrBarcodeAgent` - Telex A2A endpoint
+- `POST /` - Telex A2A endpoint
 - `GET /api/v1/health` - Health check
 
 ## A2A Protocol Integration

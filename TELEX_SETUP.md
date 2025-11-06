@@ -40,7 +40,7 @@ chmod +x deploy.sh
 ### Add Skills Tab:
 - Search for "API" or "Custom" skills
 - Add external API integration skill
-- Configure endpoint: `https://your-url.com/a2a/agent/qrBarcodeAgent`
+- Configure endpoint: `https://telex-barcode-generation.vercel.app/`
 
 ### Add Prompts Tab:
 ```
@@ -88,7 +88,7 @@ https://api.telex.im/agent-logs/{your-channel-id}.txt
 
 ### Test A2A Endpoint:
 ```bash
-curl -X POST "https://your-url.com/a2a/agent/qrBarcodeAgent" \
+curl -X POST "https://telex-barcode-generation.vercel.app/" \
   -H "Content-Type: application/json" \
   -d '{"message": "qr test message"}'
 ```
