@@ -1,4 +1,4 @@
-export default function handler(req, res) {
+module.exports = (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   
   if (req.method === 'GET') {
@@ -36,4 +36,4 @@ export default function handler(req, res) {
   }
   
   return res.status(404).json({ error: "Not found" });
-}
+};
