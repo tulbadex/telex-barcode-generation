@@ -1,0 +1,47 @@
+{
+  "name": "QRBarcodeAgent",
+  "description": "An AI agent that generates QR codes and barcodes for any text, URLs, or data",
+  "url": "https://your-deployed-url.com",
+  "version": "1.0.0",
+  "provider": {
+    "organization": "Tulbadex",
+    "url": "https://github.com/tulbadex"
+  },
+  "documentationUrl": "https://your-deployed-url.com/docs",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": false
+  },
+  "defaultInputModes": ["text/plain"],
+  "defaultOutputModes": ["application/json", "text/plain", "image/png"],
+  "skills": [
+    {
+      "id": "qr_generator",
+      "name": "QR Code Generator",
+      "description": "Generates QR codes for any text, URLs, or data with customizable size",
+      "inputModes": ["text/plain"],
+      "outputModes": ["image/png", "text/plain"],
+      "examples": [
+        {
+          "input": { "parts": [{ "text": "qr https://example.com", "contentType": "text/plain" }] },
+          "output": { "parts": [{ "text": "QR code generated successfully", "contentType": "text/plain" }] }
+        }
+      ]
+    },
+    {
+      "id": "barcode_generator",
+      "name": "Barcode Generator",
+      "description": "Creates barcodes in multiple formats (CODE128, EAN13, EAN8, UPC)",
+      "inputModes": ["text/plain"],
+      "outputModes": ["image/png", "text/plain"],
+      "examples": [
+        {
+          "input": { "parts": [{ "text": "barcode 1234567890", "contentType": "text/plain" }] },
+          "output": { "parts": [{ "text": "Barcode generated successfully", "contentType": "text/plain" }] }
+        }
+      ]
+    }
+  ],
+  "supportsAuthenticatedExtendedCard": false
+}

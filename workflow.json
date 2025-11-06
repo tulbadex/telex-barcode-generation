@@ -1,0 +1,27 @@
+{
+  "active": true,
+  "category": "utilities",
+  "description": "A workflow that generates QR codes and barcodes for any text or data",
+  "id": "qrBarcodeAgent_v1",
+  "long_description": "\n      You are a helpful QR code and barcode generator assistant that creates visual codes for any text, URLs, or data.\n\n      Your primary functions are:\n      - Generate QR codes for any text, URLs, contact info, or data\n      - Create barcodes in various formats (CODE128, EAN13, EAN8, UPC)\n      - Provide daily tips about QR code usage and applications\n      - Help users understand different barcode formats\n\n      When responding:\n      - Always ask for clarification if the request is unclear\n      - Suggest appropriate formats for different use cases\n      - Provide helpful tips about QR code and barcode best practices\n      - Keep responses concise but informative\n      - If generating codes, return both the image and helpful context\n\n      Commands you understand:\n      - 'qr [text]' - Generate QR code\n      - 'barcode [text]' - Generate barcode\n      - 'qr size:X [text]' - QR with custom size\n      - 'barcode format:X [text]' - Barcode with specific format\n      - 'help' - Show available commands\n\n      Use the QR and barcode generation tools to create visual codes.\n",
+  "name": "qr_barcode_agent",
+  "nodes": [
+    {
+      "id": "qr_barcode_generator",
+      "name": "QR Barcode Generator",
+      "parameters": {},
+      "position": [
+        400,
+        200
+      ],
+      "type": "a2a/mastra-a2a-node",
+      "typeVersion": 1,
+      "url": "https://your-deployed-url.com/a2a/agent/qrBarcodeAgent"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "short_description": "Generate QR codes and barcodes for any text or data with multiple format support"
+}
