@@ -32,8 +32,8 @@ src/
 
 1. **Clone the repository:**
 ```bash
-git clone <repository-url>
-cd qr-barcode-agent
+git clone https://github.com/tulbadex/telex-barcode-generation
+cd telex-barcode-generation
 ```
 
 2. **Install dependencies:**

@@ -50,3 +50,7 @@ htmlcov/
 
 # Node modules (if any)
 node_modules/
+
+# Documentation files
+BLOG_POST.md
+TWITTER_POST.md

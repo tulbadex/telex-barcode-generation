@@ -1,13 +1,13 @@
 {
   "name": "QRBarcodeAgent",
   "description": "An AI agent that generates QR codes and barcodes for any text, URLs, or data",
-  "url": "https://your-deployed-url.com",
+  "url": "https://telex-barcode-generation.vercel.app",
   "version": "1.0.0",
   "provider": {
     "organization": "Tulbadex",
     "url": "https://github.com/tulbadex"
   },
-  "documentationUrl": "https://your-deployed-url.com/docs",
+  "documentationUrl": "https://telex-barcode-generation.vercel.app/docs",
   "capabilities": {
     "streaming": false,
     "pushNotifications": false,
