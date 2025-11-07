@@ -1,14 +1,12 @@
 {
   "name": "qr-barcode-agent",
   "version": "1.0.0",
-  "description": "QR and Barcode Generator Agent for Telex",
+  "description": "QR & Barcode Generator Agent for Telex.im",
   "main": "api/index.js",
-  "scripts": {
-    "dev": "vercel dev",
-    "build": "echo 'No build step required'"
+  "dependencies": {
+    "qrcode": "^1.5.3"
   },
-  "dependencies": {},
   "engines": {
-    "node": "22.x"
+    "node": "18.x"
   }
 }
