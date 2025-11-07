@@ -1,35 +1,36 @@
 const QRCode = require('qrcode');
 
-module.exports = async (req, res) => {
+module.exports = (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   
-  if (req.method === 'GET') {
-    if (req.url === '/' || req.url === '') {
-      return res.status(200).json({
-        message: "QR & Barcode Generator Agent",
-        status: "active",
-        version: "1.0.0"
-      });
+  try {
+    if (req.method === 'GET') {
+      if (req.url === '/' || req.url === '') {
+        return res.status(200).json({
+          message: "QR & Barcode Generator Agent",
+          status: "active",
+          version: "1.0.0"
+        });
+      }
+      
+      if (req.url === '/health') {
+        return res.status(200).json({
+          status: "healthy",
+          timestamp: new Date().toISOString()
+        });
+      }
     }
     
-    if (req.url === '/health') {
-      return res.status(200).json({
-        status: "healthy",
-        timestamp: new Date().toISOString()
-      });
-    }
-  }
-  
-  if (req.method === 'POST') {
-    try {
+    if (req.method === 'POST') {
       let body = '';
+      
       req.on('data', chunk => {
         body += chunk.toString();
       });
       
       req.on('end', async () => {
         try {
-          const data = JSON.parse(body);
+          const data = JSON.parse(body || '{}');
           const message = data.text || data.message || '';
           
           if (message.toLowerCase().startsWith('qr ')) {
@@ -41,28 +42,23 @@ module.exports = async (req, res) => {
               });
             }
             
-            const qrDataURL = await QRCode.toDataURL(text, {
-              width: 300,
-              margin: 2,
-              color: {
-                dark: '#000000',
-                light: '#FFFFFF'
-              }
-            });
-            
-            return res.status(200).json({
-              text: `QR code generated for: ${text}`,
-              type: "image",
-              image: qrDataURL
-            });
-          }
-          
-          if (message.toLowerCase().startsWith('barcode ')) {
-            const text = message.substring(8).trim();
-            return res.status(200).json({
-              text: `Barcode generation not implemented yet. Requested: ${text}`,
-              type: "text"
-            });
+            try {
+              const qrDataURL = await QRCode.toDataURL(text, {
+                width: 300,
+                margin: 2
+              });
+              
+              return res.status(200).json({
+                text: `QR code generated for: ${text}`,
+                type: "image",
+                image: qrDataURL
+              });
+            } catch (qrError) {
+              return res.status(200).json({
+                text: `QR generation failed: ${qrError.message}`,
+                type: "text"
+              });
+            }
           }
           
           return res.status(200).json({
@@ -78,13 +74,15 @@ module.exports = async (req, res) => {
         }
       });
       
-    } catch (error) {
-      return res.status(200).json({
-        text: `Error: ${error.message}`,
-        type: "text"
-      });
+      return; // Don't send response here, wait for 'end' event
     }
+    
+    return res.status(404).json({ error: "Not found" });
+    
+  } catch (error) {
+    return res.status(500).json({
+      text: `Server error: ${error.message}`,
+      type: "text"
+    });
   }
-  
-  return res.status(404).json({ error: "Not found" });
 };
